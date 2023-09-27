@@ -1,0 +1,26 @@
+﻿@model Unidad1Actividad1.Models.PerfilViewModel;
+<html>
+<head>
+    <link href="~/perfilCSS.css" rel="stylesheet" type="text/css">
+    <title>Perfil</title>
+</head>
+<body>
+    <section class="perfil">
+        <h1>@Model.Nombre</h1>
+        <h2>@Model.Carrera</h2>
+        <h2>@Model.Instituto</h2>
+        <ul>
+            <li><b>Materia:</b> @Model.Materia</li>
+            <li><b>Semestre:</b> @Model.Semestre</li>
+            <li><b>Periodo:</b> @Model.Periodo</li>
+            <li><b>Núm. de Control:</b> @Model.NumControl</li>
+            <li><b>Correo institucional:</b><br> @Model.Correo</li>
+        </ul>
+        <nav>
+            <a href="https://www.itesrc.edu.mx/index.php"><img src="~/img/tecnm.jpg"/></a>
+            <a href="https://www.itesrc.edu.mx/index.php"><img src="~/img/itesrc.jpg"/></a>
+        </nav>
+    </section>
+</body>
+</html>
+
