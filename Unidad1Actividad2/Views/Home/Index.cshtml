@@ -1,0 +1,35 @@
+﻿@model Unidad1Actividad2.Models.ConversionViewModel
+<html>
+<head>
+    <title>Conversión de moneda</title>
+    <style>
+        form {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h2 {
+            font-size: large;
+        }
+    </style>
+</head>
+<form method="post">
+    <h1>Conversión de moneda</h1>
+    <h2>Haz una conversión de moneda entre pesos mexicanos(MXN) a dólares estadounidenses(USD) o al revés.</h2>
+
+    <label>Cantidad a convertir: </label>
+    <input type="number" name="Cantidad" value="@Model.Cantidad" required />
+    <label> de </label>
+    <select name="MonedaOrigen">
+        <option value="MXN" @(Model.MonedaOrigen == "MXN")>MXN</option>
+        <option value="USD" @(Model.MonedaOrigen == "USD")>USD</option>
+    </select>
+    <label> a </label>
+    <select name="MonedaDestino">
+        <option value="MXN" @(Model.MonedaDestino == "MXN")>MXN</option>
+        <option value="USD" @(Model.MonedaDestino == "USD")>USD</option>
+    </select>
+    <br /><br />
+    <button type="submit">Convertir</button>
+    <p>La cantidad es: $ @Model.Resultado.ToString("0.00")</p>
+</form>
+</html>
