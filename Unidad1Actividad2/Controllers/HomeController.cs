@@ -7,15 +7,11 @@ namespace Unidad1Actividad2.Controllers
     {
         public IActionResult Index(ConversionViewModel vm)
         {
-            if (vm.MonedaOrigen == vm.MonedaDestino)
-            {
-                vm.Resultado = vm.Cantidad;
-            }
-            else if (vm.MonedaOrigen == "MXN" && vm.MonedaDestino == "USD")
+            if (vm.Moneda == "USD")
             {
                 vm.Resultado = vm.Cantidad / 18;
             }
-            else if (vm.MonedaOrigen == "USD" && vm.MonedaDestino == "MXN")
+            else if (vm.Moneda == "MXN")
             {
                 vm.Resultado = vm.Cantidad * 18;
             }
