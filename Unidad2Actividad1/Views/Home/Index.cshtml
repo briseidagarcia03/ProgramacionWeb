@@ -1,0 +1,25 @@
+﻿@model Unidad2Actividad1.Models.ViewModels.IndexViewModel
+@{
+    Layout = "MainLayout";
+}
+
+<div class="slides">
+            <img src="~/images/carousel1.jpg" />
+        </div>
+
+        <h1>Clasificación de los vertebrados</h1>
+
+        
+        <div class="clases">
+            @foreach(var c in Model.Clases)
+            {
+               <div>
+                  <a href="~/Especies/Index/@c.Nombre"> @*poner bien la ruta*@
+                  <img src="~/clases/@(c.Id).jpg" />
+                  <h1>@c.Nombre</h1>
+                  <p>@c.Descripcion</p>
+                  </a>
+               </div>
+            }         
+        </div>
+

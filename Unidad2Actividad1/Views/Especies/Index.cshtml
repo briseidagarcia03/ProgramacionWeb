@@ -1,0 +1,25 @@
+﻿@model Unidad2Actividad1.Models.ViewModels.IndexEspeciesViewModel
+@{
+    Layout = "MainLayout";
+}
+
+    <h1>
+
+        <img src="~/clases/@(Model.Id).png" /> @Model.Nombre
+    </h1>
+
+    <div class="listaEspecies2">
+        @foreach (var e in Model.Especies)
+        {
+            <a href="~/especies/especie/@e.Especie">
+                <img src="~/especies/@(e.Id).jpg" title="@e.Especie" />
+            </a>
+        }
+    </div>
+
+
+
+        <script>
+            var c = document.querySelector("main h1 img").cloneNode();
+            document.querySelector("main h1").appendChild(c);
+        </script>
