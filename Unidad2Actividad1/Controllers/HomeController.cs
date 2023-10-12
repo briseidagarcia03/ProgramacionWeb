@@ -14,8 +14,8 @@ namespace Unidad2Actividad1.Controllers
             vm.Clases = datos.Select(x => new ClaseModel
             {
                 Id = x.Id,
-                Nombre = x.Nombre,
-                Descripcion = x.Descripcion
+                Nombre = x.Nombre??"Sin nombre",
+                Descripcion = x.Descripcion??"Sin descripción"
             });
             return View(vm);
         }
