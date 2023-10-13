@@ -3,6 +3,7 @@
     public class IndexViewModel
     {
         public IEnumerable<PerrosModel> ListaPerros { get; set; } = null!;
+        public IEnumerable<char> LetraAbecedario { get; set; } = null!;
     }
 
     public class PerrosModel

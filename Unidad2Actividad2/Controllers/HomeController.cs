@@ -7,7 +7,9 @@ namespace Unidad2Actividad2.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        [Route("/")]
+        [Route("/Home/Index/{letra}")]
+        public IActionResult Index(string letra)
         {
             PerrosContext context = new();
             IndexViewModel vm = new();
@@ -16,7 +18,17 @@ namespace Unidad2Actividad2.Controllers
             {
                 Id = x.Id,
                 Nombre = x.Nombre,
-            });
+            }).ToList();
+            var abc = datos.Select(x => x.Nombre[0]).ToList();
+            vm.LetraAbecedario = abc.Distinct();
+            if (letra != null)
+            {
+                vm.ListaPerros = datos.Where(x=>x.Nombre.StartsWith(letra)).Select(x=> new PerrosModel
+                {
+                    Id = x.Id,
+                    Nombre = x.Nombre
+                }).ToList();
+            }
             return View(vm);
         }
 
@@ -57,7 +69,7 @@ namespace Unidad2Actividad2.Controllers
                     AmistadDesconocidos = (int)datos.Estadisticasraza.AmistadDesconocidos,
                     AmistadPerros = (int)datos.Estadisticasraza.AmistadPerros,
                     NecesidadCepillado = (int)datos.Estadisticasraza.NecesidadCepillado,
-                    Perros = context.Razas.Where(x => x.Nombre != nombre)
+                    Perros = context.Razas
                     .Select(x => new PerrosModel
                     {
                         Id = x.Id,
@@ -69,6 +81,25 @@ namespace Unidad2Actividad2.Controllers
             }
 
         
+        }
+
+        [Route("/Home/Paises")]
+        public IActionResult Paises()
+        {
+            PerrosContext context = new();
+            PaisesViewModel vm = new()
+            {
+                Paises = context.Paises.OrderBy(x => x.Nombre).Select(x => new PaisesModel
+                {
+                     Nombre = x.Nombre,
+                     Perros = x.Razas.OrderBy(p => p.Nombre).Select(p => new PerrosModel
+                     {
+                        Id = p.Id,
+                        Nombre = p.Nombre
+                    })
+                })
+            };
+            return View(vm);
         }
     }
 }
