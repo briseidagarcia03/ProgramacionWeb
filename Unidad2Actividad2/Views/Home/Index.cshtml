@@ -17,7 +17,7 @@
         @foreach(var p in Model.ListaPerros){
             <li>
                 <a href="~/Raza/@p.Nombre.Replace(" ", "-")">
-                <img src="imgs_perros/@(p.Id)_0.jpg">
+                <img src="~/imgs_perros/@(p.Id)_0.jpg">
                 @p.Nombre
             </a>
            </li>
